@@ -2,7 +2,7 @@ const fetch = require("node-fetch");
 
 module.exports = async (req, res) => {
 try {
-const sheetUrl = "https://script.google.com/macros/s/AKfycbxBM-_29h79M73mZ0s9cYap4_o1_jGIPC3XFRw3r3DHfjkbzr53n43O2eNugRdKXd5o/exec";
+const sheetUrl = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLgEcO66uTUJsHUI81vhAANEaHzdqhqXv0M4nyTtI5XoaUK9-zNEGbR1rqKZmKOPbmliGAwJj-v3pdvPmHyPX9SNuGhaFof3qQLFTl6ARmvqsO3B1Ewt0avHSgsVnCfB84Y3RUEumE6cloYvTdr-ZWF42lf8BnEFFnKW92_C4noYHkeF1VgxlScMPZzMrsEA23Pg9jxmVCI4TnUmyFYGQGw7FxYAsQTJ1k79L_LOWQq2u5DrDGlR5bYWdNQ0K3XK1u6S9FZJExuoEEyIJLr94tsGTY3lfw&lib=MkmsWdo9yhrZ0H8mB4n1y8m5nTJ9QKSJy";
 const response = await fetch(sheetUrl);
 const data = await response.json();
 
