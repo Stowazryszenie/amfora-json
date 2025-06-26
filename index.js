@@ -1,26 +1,15 @@
-const https = require('https');
+export default async function handler(req, res) {
+  try {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbxO5YQ1-Lft_XSFWIR6f2CCxQUY-BvUGKGdAtT469LcUjIC2S1YlySBvi1R5f-XnWdChA/exec");
 
-module.exports = (req, res) => {
-  const scriptUrl = 'const response = await fetch(
-  ''https://script.google.com/macros/s/AKfycbxqP-uoAdN-nPxPKxVGodq25KuTMlwxZRwbE9m8V7pJ9jrw734it7eJ7s8o20lOQn-9Jg/exec'
-'
-);
-';
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
 
-  https.get(scriptUrl, (resp) => {
-    let data = '';
-
-    resp.on('data', (chunk) => {
-      data += chunk;
-    });
-
-    resp.on('end', () => {
-      res.setHeader('Content-Type', 'application/json');
-      res.status(200).send(data);
-    });
-
-  }).on('error', (err) => {
-    console.error('Błąd połączenia z Google Apps Script:', err);
-    res.status(500).send({ error: 'Błąd połączenia z Google Apps Script' });
-  });
-};
+    const data = await response.json();
+    res.status(200).json(data);
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+}
