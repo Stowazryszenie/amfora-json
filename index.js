@@ -2,7 +2,8 @@ const https = require('https');
 
 module.exports = (req, res) => {
   const scriptUrl = 'const response = await fetch(
-  'https://script.google.com/macros/s/AKfycbxqP-uoAdN-nPxPKxVGodq25KuTMlwxZRwbE9m8V7pJ9jrw734it7eJ7s8o20lOQn-9Jg/exec'
+  ''https://script.google.com/macros/s/AKfycbxqP-uoAdN-nPxPKxVGodq25KuTMlwxZRwbE9m8V7pJ9jrw734it7eJ7s8o20lOQn-9Jg/exec'
+'
 );
 ';
 
