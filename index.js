@@ -1,14 +1,17 @@
-import fetch from 'node-fetch';
-
 export default async function handler(req, res) {
-try {
-const sheetUrl = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLgEcO66uTUJsHUI81vhAANEaHzdqhqXv0M4nyTtI5XoaUK9-zNEGbR1rqKZmKOPbmliGAwJj-v3pdvPmHyPX9SNuGhaFof3qQLFTl6ARmvqsO3B1Ewt0avHSgsVnCfB84Y3RUEumE6cloYvTdr-ZWF42lf8BnEFFnKW92_C4noYHkeF1VgxlScMPZzMrsEA23Pg9jxmVCI4TnUmyFYGQGw7FxYAsQTJ1k79L_LOWQq2u5DrDGlR5bYWdNQ0K3XK1u6S9FZJExuoEEyIJLr94tsGTY3lfw&lib=MkmsWdo9yhrZ0H8mB4n1y8m5nTJ9QKSJy";
-const response = await fetch(sheetUrl);
-const data = await response.json();
+  try {
+    const response = await fetch(
+      'https://script.googleusercontent.com/macros/echo?user_content_key=AehSkLGw_pS0A9cWkmlgTBybdclLpB6XElHwcmptKb8tdDKonul2pJJsJD81w_lORufT1L7wWejqwLGTGm8jpZM_yWgK6lt8qWeSLNSvo76E49LXz0a7_WM9oU_RVqw_wRPmNB0B6eU3UssH2s7T1UV0VAoNK_qT3b34GrBYC1zKFk2_HF0zKxJg&lib=MqK1VRDjSG5ItD5AVXCHpxH1IgWosfWaZ'
+    );
 
-res.setHeader("Content-Type", "application/json");
-res.status(200).json(data);
-} catch (error) {
-res.status(500).json({ error: "Błąd połączenia z Apps Script" });
-}
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    res.status(200).json(data);
+  } catch (err) {
+    console.error('Błąd pobierania danych z Apps Script:', err);
+    res.status(500).json({ error: 'Błąd połączenia z Google Apps Script' });
+  }
 }
