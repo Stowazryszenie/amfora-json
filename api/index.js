@@ -1,7 +1,7 @@
 // api/index.js
 
 export default async function handler(req, res) {
-  const response = await fetch('https://script.google.com/macros/s/AKfycbyrHo6EyQ7rrgIr-gStHgM-iECQKzvLu7ZsrCvdTibzuFh3MaXYwzAfPKi3V5XTIkxhOQ/exec');
+  const response = await fetch('https://script.google.com/macros/s/AKfycbzyn7WEgOm03fbqV36XjgIx2fBTx9PnrkxDaDxLCWUgYW6OnziTc9yS6NrdwRb7GOAnyg/exec');
   
   if (!response.ok) {
     return res.status(500).json({ error: 'Failed to fetch data from Google Apps Script' });
